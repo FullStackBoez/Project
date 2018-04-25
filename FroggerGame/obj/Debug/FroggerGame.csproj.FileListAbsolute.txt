@@ -1,0 +1,10 @@
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\bin\Debug\FroggerGame.exe.config
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\bin\Debug\FroggerGame.exe
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\bin\Debug\FroggerGame.pdb
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.MainWindow.resources
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.Properties.Resources.resources
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.csproj.GenerateResource.cache
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.csproj.CoreCompileInputs.cache
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.exe
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.pdb
+C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Debug\FroggerGame.csprojResolveAssemblyReference.cache
