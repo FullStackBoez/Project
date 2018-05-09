@@ -24,7 +24,7 @@ namespace FroggerGame.Classes
         {
             this.X = X;
             this.Y = Y;
-            int ran = rand.Next(0, 4);
+            int ran = rand.Next(0, 5);
             switch (ran)
             {
                 case 0:power = Powers.EXTRA_LIFE;
@@ -43,12 +43,34 @@ namespace FroggerGame.Classes
                     image = Properties.Resources.doublePoints;
                     break;
                 case 4:
-                    power = Powers.MYSTERYBOX;//kako idea sluzi samo update NEXT u rand
+                    power = Powers.MYSTERYBOX;
+                    image = Properties.Resources.chest;
+                    openChest();
                     break;
                    
             }
 
         }
+        private void openChest()
+        {
+            Random rand = new Random();
+            int ran = rand.Next(0, 4);
+            switch (ran)
+            {
+                case 0:
+                    power = Powers.EXTRA_LIFE;
+                    break;
+                case 1:
+                    power = Powers.SUPER_JUMP;
+                    break;
+                case 2:
+                    power = Powers.INVINCIBILITY;
+                    break;
+                case 3:
+                    power = Powers.DOUBLE_POINTS;
+                    break;
+            }
+            }
         public void attatch(Log log)
         {
             this.log = log;
