@@ -23,7 +23,7 @@ namespace FroggerGame
         private int defaultFrogSpeed=40;
         private int defaultFrogPosX=360;
         private int defaultFrogPosY=560;
-        public int numOfMoves = -2;
+        public static int numOfMoves = -2;
         private int pointsInGame = 0;
         private bool dead=false;
         private int double_points = 1;
@@ -49,12 +49,18 @@ namespace FroggerGame
                 e.Graphics.DrawImage(ln.laneBitmap, ln.laneRectangle);
                 if (ln.powerup != null)
                 {
-                    e.Graphics.DrawImage(ln.powerup.image,ln.powerup.X, ln.powerup.Y,40,40);
+                    e.Graphics.DrawImage(ln.powerup.image,ln.powerup.rectangle);
                 }
-                if(ln.Type!=0)
-                foreach (Box bo in ln.lineBox)
+                if (ln.rock != null)
                 {
-                    e.Graphics.DrawImage(bo.boxImage, bo.boxRectangle);
+                    e.Graphics.DrawImage(ln.rock.image, ln.rock.rectangle);
+                }
+                if (ln.Type != 0)
+                {
+                    foreach (Box bo in ln.lineBox)
+                    {
+                        e.Graphics.DrawImage(bo.boxImage, bo.boxRectangle);
+                    }
                 }
             }
             e.Graphics.DrawImage(frog.boxImage, frog.boxRectangle);
@@ -133,7 +139,7 @@ namespace FroggerGame
         {
             if (numOfMoves>=1)
             {
-                pointsInGame += pointsAdder*double_points;
+                pointsInGame += (pointsAdder*double_points);
                 points.Text = pointsInGame.ToString();
                 frog.moveDown();
                 windowGrid.updateGrid();
@@ -173,6 +179,5 @@ namespace FroggerGame
                 windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
             }
         }
-
     }
 }

@@ -26,6 +26,7 @@ namespace FroggerGame.Classes
         private Bitmap laneImage;
         private List<Box> boxes;
         public PowerUps powerup;
+        public Rock rock;
 
         public Bitmap laneBitmap { get { return laneImage; } }
         public Rectangle laneRectangle { get { return new Rectangle(posX,posY,width,height); } }
@@ -54,7 +55,15 @@ namespace FroggerGame.Classes
             this.posY = posY;
             this.windowHeight = windowHeight;
             this.windowWidth = windowWidth;
+            // random generation for power ups (chooses whether or not this lane will have a power up)
             double num = rand.NextDouble();
+            if (num > 0.7)
+            {
+                int X = rand.Next(60, windowWidth - 60);
+                powerup = new PowerUps(X, Y, rand);
+            }
+            else powerup = null;
+            num = rand.NextDouble();
             int numberOfBoxes = rand.Next(1, 4);
             if (num > 0.7)
             {
@@ -62,6 +71,20 @@ namespace FroggerGame.Classes
                 isSafe = true;
                 laneImage = Properties.Resources.grass;
                 boxes = null;
+                // random generation of rocks (chooses whether or not this safe lane will have a rock)
+                num = rand.NextDouble();
+                if (num > 0.7)
+                {
+                    int X = rand.Next(60, windowWidth - 60);
+                    if (powerup != null)
+                    {
+                        if (X == powerup.X && X != 60) X -= 50;
+                        else if (X == powerup.X && X == 60) X += 50;
+                    }
+                    rock = new Rock(X, Y, defaultBoxHeight, defaultBoxWidth, Properties.Resources.rock);
+                    WindowGrid.rockList.Add(rock);
+                }
+                else rock = null;
             }
             else
             {
@@ -76,15 +99,7 @@ namespace FroggerGame.Classes
                     createLogs(rand,numberOfBoxes);
                 }
 
-            }
-            // random generation for power ups (chooses whether or not this lane will have a power up)
-            num = rand.NextDouble();
-            if (num > 0.7)
-            {
-                int X = rand.Next(60, windowWidth-60);
-                powerup = new PowerUps(X, Y, rand);
-            }
-            else powerup = null;
+            }            
         }
         public void deletePowerUp()
         {
@@ -128,8 +143,17 @@ namespace FroggerGame.Classes
                 if(type!=0)
                 foreach (Box b in boxes)
                     b.Dispose();
-                if (powerup != null) powerup.Dispose();
-
+                if (powerup != null)
+                {
+                    powerup.Dispose();
+                    powerup = null;
+                }
+                if (rock != null)
+                {
+                    WindowGrid.rockList.Remove(rock);
+                    rock.Dispose();
+                    rock = null;
+                }
                 disposed = true;
             }
         }

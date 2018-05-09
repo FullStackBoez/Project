@@ -16,6 +16,9 @@ namespace FroggerGame.Classes
         private Log log;
         public Bitmap image;
         private bool disposed = false;
+        private int defaultWidth = 40;
+        private int defaultHeight = 40;
+        public Rectangle rectangle { get { return new Rectangle(X, Y, defaultWidth, defaultHeight); } }
 
         public PowerUps(int X, int Y,Random rand)
         {

@@ -14,6 +14,7 @@ namespace FroggerGame.Classes
         private int windowWidth;
         private int boxHeight;
         private int boxWidth;
+        public static List<Rock> rockList;
         private List<Lane> lanes;
 
         public List<Lane> windowLanes { get { return lanes; } }
@@ -25,6 +26,7 @@ namespace FroggerGame.Classes
             this.boxHeight = boxHeight;
             this.boxWidth = boxWidth;
             this.lanes = new List<Lane>();
+            rockList = new List<Rock>();
             rand = new Random();
             createLanes();
         }
@@ -37,9 +39,14 @@ namespace FroggerGame.Classes
                 tmp.Add(lanes[i]);
                 tmp[i-1].Y += boxHeight;
                 if (tmp[i - 1].powerup != null) tmp[i - 1].powerup.Y += boxHeight;
-                if (tmp[i-1].Type!=0)
-                foreach (Box b in tmp[i - 1].lineBox)
-                    b.Y += boxHeight;
+                if (tmp[i - 1].rock != null) tmp[i - 1].rock.Y += boxHeight;
+                if (tmp[i - 1].Type != 0)
+                {
+                    foreach (Box b in tmp[i - 1].lineBox)
+                    {
+                        b.Y += boxHeight;
+                    }
+                }
             }
             lanes[0].Dispose();
             tmp.Add(new Lane(0, 0, boxHeight, windowWidth, rand, windowHeight, windowWidth));

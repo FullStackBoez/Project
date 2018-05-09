@@ -36,6 +36,14 @@ namespace FroggerGame.Classes
             image.MakeTransparent(col);
             if (posY <= 0) return;
             else posY -= speed;
+            foreach(Rock r in WindowGrid.rockList)
+            {
+                if (hitsRock(r))
+                {
+                    posY += speed;
+                    MainWindow.numOfMoves--;
+                }
+            }
         }
         public override void moveDown()
         {
@@ -44,6 +52,10 @@ namespace FroggerGame.Classes
             image.MakeTransparent(col);
             if (posY + speed >= windowHeight) return;
             else posY += speed;
+            foreach (Rock r in WindowGrid.rockList)
+            {
+                if (hitsRock(r)) posY -= speed;
+            }
         }
         public override void moveLeft()
         {
@@ -52,6 +64,10 @@ namespace FroggerGame.Classes
             image.MakeTransparent(col);
             if (posX <= 0) return;
             else posX -= speed;
+            foreach (Rock r in WindowGrid.rockList)
+            {
+                if (hitsRock(r)) posX += speed;
+            }
         }
         public override void moveRight()
         {
@@ -60,6 +76,10 @@ namespace FroggerGame.Classes
             image.MakeTransparent(col);
             if (posX + speed >= windowWidth) return;
             else posX += speed;
+            foreach (Rock r in WindowGrid.rockList)
+            {
+                if (hitsRock(r)) posX -= speed;
+            }
         }
         public override void move()
         {
@@ -112,7 +132,11 @@ namespace FroggerGame.Classes
             image = Properties.Resources.frogUp;
             Color col = image.GetPixel(1, 1);
             image.MakeTransparent(col);
-            Y -= 80;
+            posY -= 80;
+            foreach (Rock r in WindowGrid.rockList)
+            {
+                if (hitsRock(r)) posY += 40;
+            }
             jumps--;
         }
         public bool onLog(Box c)
@@ -152,6 +176,20 @@ namespace FroggerGame.Classes
                 isInvincible = true;
                 deadSafety = true;
             }
+        }
+        public bool hitsRock(Rock c)
+        {
+            int left = posX;
+            int right = posX + boxWidth;
+            int top = posY;
+            int bottom = posY + boxHeight;
+
+            int cleft = c.X;
+            int cright = c.X + c.width;
+            int ctop = c.Y;
+            int cbottom = c.Y + c.height;
+
+            return !(left+30 >= cright || right <= cleft || top >= cbottom || bottom <= ctop);
         }
     }
 }

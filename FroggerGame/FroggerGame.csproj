@@ -65,6 +65,7 @@
     <Compile Include="Classes\Lane.cs" />
     <Compile Include="Classes\Log.cs" />
     <Compile Include="Classes\PowerUps.cs" />
+    <Compile Include="Classes\Rock.cs" />
     <Compile Include="Classes\Vehicle.cs" />
     <Compile Include="Classes\WindowGrid.cs" />
     <Compile Include="MainWindow.cs">
@@ -97,6 +98,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TODO" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -166,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\invincibility.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

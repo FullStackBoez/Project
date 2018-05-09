@@ -1,0 +1,16 @@
+﻿
+###################################################################################
+                               TODOs za igrata:
+###################################################################################
+
+1. Optimizacija na igrata (brzina, golemina, teskotija ...)
+2. Da se sredi box clashot na frog so log i frog so rock
+3. Podobri spritovi
+4. Mozno e i dodavanje na animacii za dvizenje i koga ke se zemat power upsot
+5. Dodavanje na meni
+6. Dodavanje na highscore
+7. Da se napravi dvizenjeto na kamerat po smooth kako temple run (ako e mozno)
+8. Da se napravi refactor na kodod i da se dodatat komentari
+9. Da se sredi stvarta so timerite
+
+###################################################################################
