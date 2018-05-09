@@ -5,7 +5,7 @@
 
 1. Optimizacija na igrata (brzina, golemina, teskotija ...)
 2. Da se sredi box clashot na frog so log i frog so rock
-3. Podobri spritovi
+3. Podobri spritovi(da se trgne kodot za transparentnost)
 4. Mozno e i dodavanje na animacii za dvizenje i koga ke se zemat power upsot
 5. Dodavanje na meni
 6. Dodavanje na highscore
@@ -16,5 +16,7 @@
 (ima bug kade power upot nemoze da se zeme poso kordinatite 
 nemozat da se sofpadnata nikad bitrebalo da se spawnuvaat samo na kordinati so se delivi so 40)
 11.Moze da se dodade muzika
+12.ako e mozno da se sredi bugot(errorot) so memorijata(slika)
+13.Da se podobri UIto
 
 ###################################################################################

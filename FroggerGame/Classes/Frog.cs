@@ -165,7 +165,7 @@ namespace FroggerGame.Classes
             int ctop = c.Y;
             int cbottom = c.Y + 40;
 
-            return !(left >= cright - 20 || right - 20 <= cleft || top >= cbottom || bottom <= ctop);
+            return !(left >= cright || right <= cleft || top >= cbottom || bottom <= ctop);
         }
         public void takeALife()
         {
