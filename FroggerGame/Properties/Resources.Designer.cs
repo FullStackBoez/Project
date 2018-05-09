@@ -103,6 +103,36 @@ namespace FroggerGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap doublePoints {
+            get {
+                object obj = ResourceManager.GetObject("doublePoints", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap extraJump {
+            get {
+                object obj = ResourceManager.GetObject("extraJump", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap extraLife {
+            get {
+                object obj = ResourceManager.GetObject("extraLife", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap frogDown {
             get {
                 object obj = ResourceManager.GetObject("frogDown", resourceCulture);
@@ -146,6 +176,16 @@ namespace FroggerGame.Properties {
         internal static System.Drawing.Bitmap grass {
             get {
                 object obj = ResourceManager.GetObject("grass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap invincibility {
+            get {
+                object obj = ResourceManager.GetObject("invincibility", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

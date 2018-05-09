@@ -13,13 +13,21 @@ namespace FroggerGame.Classes
         // This class defines the palyer and allows control over the frog and other features.
 
         public Log log;
+        public int jumps;
+        public int lives;
+        public bool isInvincible;
+        public bool deadSafety;
         public bool dead;
 
         public Frog(int windowHeight, int windowWidth, int boxHeight, int boxWidth, int posX, int posY, int speed, Bitmap image)
             : base(windowHeight, windowWidth, boxHeight, boxWidth, posX, posY, speed, image)
         {
             log = null;
+            deadSafety = false;
             dead = false;
+            jumps = 0;
+            lives = 1;
+            isInvincible=false;
         }
         public override void moveUp()
         {
@@ -70,14 +78,19 @@ namespace FroggerGame.Classes
         }
         public void attach(Log l)
         {
-            
+
             if (l.isSafe)
-            log = l;
-            else dead=true;
+                log = l;
+            else
+            {
+                if (!isInvincible)
+                {
+                    takeALife();
+                }
+            }
         }
         public void detach()
         {
-           
             log = null;
         }
         public bool crash(Box c)
@@ -94,6 +107,14 @@ namespace FroggerGame.Classes
 
             return !(left >= cright || right <= cleft || top >= cbottom || bottom <= ctop);
         }
+        public void extraJump()
+        {
+            image = Properties.Resources.frogUp;
+            Color col = image.GetPixel(1, 1);
+            image.MakeTransparent(col);
+            Y -= 80;
+            jumps--;
+        }
         public bool onLog(Box c)
         {
             int left = posX;
@@ -107,6 +128,30 @@ namespace FroggerGame.Classes
             int cbottom = c.posY + c.boxHeight;
 
             return !(left >= cright-20 || right-20 <= cleft || top >= cbottom || bottom <= ctop);
+        }
+        public bool onPowerUp(PowerUps c)
+        {
+            int left = posX;
+            int right = posX + boxWidth;
+            int top = posY;
+            int bottom = posY + boxHeight;
+
+            int cleft = c.X;
+            int cright = c.X + 40;
+            int ctop = c.Y;
+            int cbottom = c.Y + 40;
+
+            return !(left >= cright - 20 || right - 20 <= cleft || top >= cbottom || bottom <= ctop);
+        }
+        public void takeALife()
+        {
+            if (lives - 1 == 0) dead = true;
+            else
+            {
+                lives--;
+                isInvincible = true;
+                deadSafety = true;
+            }
         }
     }
 }

@@ -36,7 +36,8 @@ namespace FroggerGame.Classes
             {
                 tmp.Add(lanes[i]);
                 tmp[i-1].Y += boxHeight;
-                if(tmp[i-1].Type!=0)
+                if (tmp[i - 1].powerup != null) tmp[i - 1].powerup.Y += boxHeight;
+                if (tmp[i-1].Type!=0)
                 foreach (Box b in tmp[i - 1].lineBox)
                     b.Y += boxHeight;
             }
@@ -59,14 +60,21 @@ namespace FroggerGame.Classes
         }
         public bool crashed(Frog frog)
         {
+            if (frog.isInvincible) return false;
             foreach (Lane l in lanes)
             {
                 if (l.Y == frog.Y && l.Type == 0) return false;
-                if(l.Y == frog.Y && l.Type==1)
-                foreach(Box b in l.lineBox)
-                {
-                    if (frog.crash(b)) return true;
-                }
+                if (l.Y == frog.Y && l.Type == 1)
+                    foreach (Box b in l.lineBox)
+                    {
+                        if (frog.crash(b))
+                        {
+                           frog.takeALife();
+                            if(frog.dead)
+                            return true;
+                            else return false;
+                        }
+                    }
                 if (l.Y == frog.Y && l.Type == 2)
                 {
                     foreach (Box b in l.lineBox)
@@ -78,7 +86,10 @@ namespace FroggerGame.Classes
                             return false;
                         }
                     }
-                    return true;
+                    frog.takeALife();
+                    if (frog.dead)
+                        return true;
+                    else return false;
                 }
             }
             return false;

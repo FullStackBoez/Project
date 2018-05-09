@@ -25,6 +25,7 @@ namespace FroggerGame.Classes
         private bool disposed = false;
         private Bitmap laneImage;
         private List<Box> boxes;
+        public PowerUps powerup;
 
         public Bitmap laneBitmap { get { return laneImage; } }
         public Rectangle laneRectangle { get { return new Rectangle(posX,posY,width,height); } }
@@ -76,6 +77,19 @@ namespace FroggerGame.Classes
                 }
 
             }
+            // random generation for power ups (chooses whether or not this lane will have a power up)
+            num = rand.NextDouble();
+            if (num > 0.7)
+            {
+                int X = rand.Next(60, windowWidth-60);
+                powerup = new PowerUps(X, Y, rand);
+            }
+            else powerup = null;
+        }
+        public void deletePowerUp()
+        {
+            powerup.Dispose();
+            powerup = null;
         }
         private void createVehicle(Random rand,int numberOfBoxes)
         {
@@ -114,6 +128,7 @@ namespace FroggerGame.Classes
                 if(type!=0)
                 foreach (Box b in boxes)
                     b.Dispose();
+                if (powerup != null) powerup.Dispose();
 
                 disposed = true;
             }

@@ -23,9 +23,15 @@ namespace FroggerGame
         private int defaultFrogSpeed=40;
         private int defaultFrogPosX=360;
         private int defaultFrogPosY=560;
-        private int numOfMoves = -2;
+        public int numOfMoves = -2;
         private int pointsInGame = 0;
         private bool dead=false;
+        private int double_points = 1;
+        private int pointsAdder = 100;
+        private int tickerPoints = 0;
+        private int tickerInvincibility = 0;
+        private int tickerDeadSafety = 0;
+
 
         public MainWindow()
         {
@@ -38,10 +44,13 @@ namespace FroggerGame
 
         private void Draw(object sender, PaintEventArgs e)
         {
-
             foreach(Lane ln in windowGrid.windowLanes)
             {
                 e.Graphics.DrawImage(ln.laneBitmap, ln.laneRectangle);
+                if (ln.powerup != null)
+                {
+                    e.Graphics.DrawImage(ln.powerup.image,ln.powerup.X, ln.powerup.Y,40,40);
+                }
                 if(ln.Type!=0)
                 foreach (Box bo in ln.lineBox)
                 {
@@ -53,8 +62,35 @@ namespace FroggerGame
 
         private void tick(object sender, EventArgs e)
         {
+            if (double_points==2) tickerPoints++;
+            if (tickerPoints == 10)
+            {
+                double_points = 1;
+                tickerPoints = 0;
+            }
+            if (frog.deadSafety && frog.isInvincible) tickerDeadSafety++;
+            else if (frog.isInvincible) tickerInvincibility++;
+            if (tickerInvincibility == 30)
+            {
+                frog.isInvincible = false;
+                tickerInvincibility = 0;
+            }
+            if (tickerDeadSafety == 10)
+            {
+                frog.isInvincible = false;
+                frog.deadSafety = false;
+                tickerDeadSafety = 0;
+            }
             foreach (Lane ln in windowGrid.windowLanes)
             {
+                if (ln.powerup != null && frog.onPowerUp(ln.powerup))
+                {
+                    if (ln.powerup.power == Powers.EXTRA_LIFE) frog.lives++;
+                    else if (ln.powerup.power == Powers.INVINCIBILITY) frog.isInvincible = true;
+                    else if (ln.powerup.power == Powers.SUPER_JUMP) frog.jumps++;
+                    else if (ln.powerup.power == Powers.DOUBLE_POINTS) double_points = 2;
+                    ln.deletePowerUp();
+                }
                 if (ln.Type != 0)
                     foreach (Box bo in ln.lineBox)
                     {
@@ -63,6 +99,10 @@ namespace FroggerGame
             }
             if (!dead &&  windowGrid.crashed(frog)) Death();
             if (!dead && frog.dead) Death();
+            extraJumps.Text = frog.jumps.ToString();
+            lives.Text = frog.lives.ToString();
+            timeInvincible.Text = tickerInvincibility.ToString();
+            doublePoints.Text = tickerPoints.ToString();
             Invalidate();
         }
 
@@ -82,13 +122,18 @@ namespace FroggerGame
             }
             if (e.KeyCode == Keys.Left) frog.moveLeft();
             if (e.KeyCode == Keys.Right) frog.moveRight();
+            if (e.KeyCode == Keys.Space)
+            {
+                frog.extraJump();
+                numOfMoves += 2;
+            }
             checkLine();
         }
         private void checkLine()
         {
-            if (numOfMoves==1)
+            if (numOfMoves>=1)
             {
-                pointsInGame += 100;
+                pointsInGame += pointsAdder*double_points;
                 points.Text = pointsInGame.ToString();
                 frog.moveDown();
                 windowGrid.updateGrid();
@@ -126,8 +171,8 @@ namespace FroggerGame
                 frog = new Frog
                     (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
                 windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
-
             }
         }
+
     }
 }

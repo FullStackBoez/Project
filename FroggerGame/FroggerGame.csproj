@@ -64,6 +64,7 @@
     <Compile Include="Classes\Frog.cs" />
     <Compile Include="Classes\Lane.cs" />
     <Compile Include="Classes\Log.cs" />
+    <Compile Include="Classes\PowerUps.cs" />
     <Compile Include="Classes\Vehicle.cs" />
     <Compile Include="Classes\WindowGrid.cs" />
     <Compile Include="MainWindow.cs">
@@ -104,16 +105,10 @@
     <None Include="Resources\log.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\player.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\grass.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\asphalt.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\car.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\truck.png" />
@@ -123,9 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\burninglog.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogUP.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\frogDown.png" />
@@ -162,6 +154,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doublePoints.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\extraJump.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\extraLife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invincibility.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
