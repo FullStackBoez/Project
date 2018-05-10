@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace FroggerGame.Classes
         private int boxWidth;
         public static List<Rock> rockList;
         private List<Lane> lanes;
+        public static int cameraSpeed;
+        private bool flag = false;
 
         public List<Lane> windowLanes { get { return lanes; } }
 
@@ -28,31 +31,44 @@ namespace FroggerGame.Classes
             this.lanes = new List<Lane>();
             rockList = new List<Rock>();
             rand = new Random();
+            cameraSpeed = 1;
             createLanes();
         }
 
         public void updateGrid()
-        {
+          {
             List<Lane> tmp = new List<Lane>();
-            for(int i = 1; i < lanes.Count; i++)
-            {
-                tmp.Add(lanes[i]);
-                tmp[i-1].Y += boxHeight;
-                if (tmp[i - 1].powerup != null) tmp[i - 1].powerup.Y += boxHeight;
-                if (tmp[i - 1].rock != null) tmp[i - 1].rock.Y += boxHeight;
-                if (tmp[i - 1].Type != 0)
-                {
-                    foreach (Box b in tmp[i - 1].lineBox)
-                    {
-                        b.Y += boxHeight;
-                    }
-                }
-            }
-            lanes[0].Dispose();
-            tmp.Add(new Lane(0, 0, boxHeight, windowWidth, rand, windowHeight, windowWidth));
-            lanes = tmp;
-        }
 
+
+            for (int i = 0; i < lanes.Count; i++)
+              {
+                  tmp.Add(lanes[i]);
+                  tmp[i].Y += cameraSpeed;
+                  if (tmp[i].powerup != null) tmp[i].powerup.Y += cameraSpeed;
+                  if (tmp[i ].rock != null) tmp[i].rock.Y += cameraSpeed;
+                  if (tmp[i ].Type != 0)
+                  {
+                      foreach (Box b in tmp[i ].lineBox)
+                      {
+                          b.Y += cameraSpeed;
+                      }
+                  }
+              }
+            if (lanes.Count < 16)
+                tmp.Add(new Lane(0, -(boxHeight-cameraSpeed), boxHeight, windowWidth, rand, windowHeight, windowWidth));
+            if (tmp[0].Y>=600)
+            {
+                tmp[0] = null;
+                lanes[0].Dispose();
+            }
+              flag=!flag;
+            lanes = new List<Lane>();
+            foreach (Lane b in tmp)
+            {
+                if(b!=null)
+                lanes.Add(b);
+            }
+        }
         private void createLanes()
         {
             int tmp = windowHeight;

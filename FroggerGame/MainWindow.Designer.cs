@@ -203,8 +203,9 @@
             this.MinimumSize = new System.Drawing.Size(820, 680);
             this.Name = "MainWindow";
             this.Text = "Frogger";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closing);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Draw);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.move);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.move);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -55,15 +55,7 @@ namespace FroggerGame.Classes
             this.posY = posY;
             this.windowHeight = windowHeight;
             this.windowWidth = windowWidth;
-            // random generation for power ups (chooses whether or not this lane will have a power up)
             double num = rand.NextDouble();
-            if (num > 0.7)
-            {
-                int X = rand.Next(60, windowWidth - 60);
-                powerup = new PowerUps(X, Y, rand);
-            }
-            else powerup = null;
-            num = rand.NextDouble();
             int numberOfBoxes = rand.Next(1, 4);
             if (num > 0.7)
             {
@@ -76,11 +68,6 @@ namespace FroggerGame.Classes
                 if (num > 0.7)
                 {
                     int X = rand.Next(60, windowWidth - 60);
-                    if (powerup != null)
-                    {
-                        if (X == powerup.X && X != 60) X -= 50;
-                        else if (X == powerup.X && X == 60) X += 50;
-                    }
                     rock = new Rock(X, Y, defaultBoxHeight, defaultBoxWidth, Properties.Resources.rock);
                     WindowGrid.rockList.Add(rock);
                 }
@@ -99,7 +86,16 @@ namespace FroggerGame.Classes
                     createLogs(rand,numberOfBoxes);
                 }
 
-            }            
+            }
+            // random generation for power ups (chooses whether or not this lane will have a power up)
+            num = rand.NextDouble();
+            if (num > 0.7)
+            {
+                int X = rand.Next(60, windowWidth - 60);
+                powerup = new PowerUps(X, Y, rand);
+                if (rock != null && powerup.hitsRock(rock)) powerup.X -= 40;
+            }
+            else powerup = null;
         }
         public void deletePowerUp()
         {

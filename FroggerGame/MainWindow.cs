@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace FroggerGame
 {
+    public enum DIFICULTY { NOVICE, TOURNAMENT_EASY, TOURNAMENT_MEDIUM, TOURNAMENT_HARD}
     public partial class MainWindow : Form
     {
         private Frog frog;
@@ -23,7 +24,7 @@ namespace FroggerGame
         private int defaultFrogSpeed=40;
         private int defaultFrogPosX=360;
         private int defaultFrogPosY=560;
-        public static int numOfMoves = -2;
+        public static int numOfMoves = 0;
         private int pointsInGame = 0;
         private bool dead=false;
         private int double_points = 1;
@@ -31,17 +32,52 @@ namespace FroggerGame
         private int tickerPoints = 0;
         private int tickerInvincibility = 0;
         private int tickerDeadSafety = 0;
+        private bool isNovise = false;
+        private string name = "";
+        private DIFICULTY di;
 
 
-        public MainWindow()
+        Timer time = new Timer();
+
+        public MainWindow(DIFICULTY di,string name)
         {
+            this.name = name;
+            this.di = di;
             frog = new Frog
                 (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
             windowGrid = new WindowGrid(defaultWindowHeight,defaultWindowWidth,defaultFrogHeight,defaultFrogWidth);
             
+            switch (di)
+            {
+                case DIFICULTY.NOVICE:
+                    isNovise = true;
+                    WindowGrid.cameraSpeed = defaultFrogHeight;
+                    numOfMoves = -2;
+                    break;
+                case DIFICULTY.TOURNAMENT_EASY:
+                    time.Interval = 100;
+                    time.Enabled = true;
+                    time.Tick += tic;
+                    break;
+                case DIFICULTY.TOURNAMENT_MEDIUM:
+                    time.Interval = 50;
+                    time.Enabled = true;
+                    time.Tick += tic;
+                    break;
+                case DIFICULTY.TOURNAMENT_HARD:
+                    time.Interval = 30;
+                    time.Enabled = true;
+                    time.Tick += tic;
+                    break;
+            }
             InitializeComponent();
         }
-
+        private void tic(object sender, EventArgs e)
+        {
+            windowGrid.updateGrid();
+            frog.Y++;
+            if (frog.Y > 600 && !dead) Death();
+        }
         private void Draw(object sender, PaintEventArgs e)
         {
             foreach(Lane ln in windowGrid.windowLanes)
@@ -109,6 +145,8 @@ namespace FroggerGame
             lives.Text = frog.lives.ToString();
             timeInvincible.Text = tickerInvincibility.ToString();
             doublePoints.Text = tickerPoints.ToString();
+
+            
             Invalidate();
         }
 
@@ -119,6 +157,11 @@ namespace FroggerGame
             {
                 frog.moveUp();
                 numOfMoves++;
+                if (numOfMoves > 0 && !isNovise)
+                {
+                    pointsUp();
+                    numOfMoves = 0;
+                }
             }
             if (e.KeyCode == Keys.Down)
             {
@@ -128,19 +171,35 @@ namespace FroggerGame
             }
             if (e.KeyCode == Keys.Left) frog.moveLeft();
             if (e.KeyCode == Keys.Right) frog.moveRight();
-            if (e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Space && frog.jumps>0)
             {
                 frog.extraJump();
                 numOfMoves += 2;
             }
+            if (e.KeyCode == Keys.P)
+            {
+                timer1.Enabled = false;
+                time.Enabled = false;
+                DialogResult dr = MessageBox.Show("You have paused the game.\nWould you like to resume?", "Game Paused", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    timer1.Enabled = true;
+                    time.Enabled = true;
+                }
+                else
+                {
+                    Close();
+                }
+            }
+
+            if (isNovise)
             checkLine();
         }
         private void checkLine()
         {
             if (numOfMoves>=1)
             {
-                pointsInGame += (pointsAdder*double_points);
-                points.Text = pointsInGame.ToString();
+                pointsUp();
                 frog.moveDown();
                 windowGrid.updateGrid();
                 frog.boxImage = Properties.Resources.frogUp;
@@ -149,35 +208,56 @@ namespace FroggerGame
                 numOfMoves = 0;
             }
         }
-        public void Death()
+        private void pointsUp()
+        {
+            pointsInGame += (pointsAdder * double_points);
+            points.Text = pointsInGame.ToString();
+        }
+        private void Death()
         {
             
             frog.boxImage = Properties.Resources.rip;
             Color col = frog.boxImage.GetPixel(1, 1);
             frog.boxImage.MakeTransparent(col);
-            dead = true;
+            
 
-        
-            DialogResult dr = MessageBox.Show("Do yo want to play again?", "Game over", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.No)
+            if (!dead)
             {
-                Close();
-            }
-            else
-            {
-                dead = false;
-                foreach (Lane l in windowGrid.windowLanes)
+                dead = true;
+                Debug.WriteLine("YOLO");
+                DeathWindow dw = new DeathWindow(name, di, pointsInGame);
+                dw.ShowDialog();
+                if (dw.answer == DialogResult.No)
                 {
-                    l.Dispose();
+                    dw.Dispose();
+                    this.Close();
                 }
-                points.Text = "0";
-                pointsInGame = 0;
-                numOfMoves = -2;
-                frog.Dispose();
-                frog = new Frog
-                    (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
-                windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
+                else
+                {
+                    dead = false;
+                    foreach (Lane l in windowGrid.windowLanes)
+                    {
+                        l.Dispose();
+                    }
+                    points.Text = "0";
+                    pointsInGame = 0;
+                    numOfMoves = -2;
+                    frog.Dispose();
+                    frog = new Frog
+                        (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
+                    windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
+                    dw.Dispose();
+                }
             }
+        }
+
+        private void closing(object sender, FormClosingEventArgs e)
+        {
+            foreach (Lane l in windowGrid.windowLanes)
+                l.Dispose();
+            frog.Dispose();
+            time.Dispose();
+            this.Dispose();
         }
     }
 }

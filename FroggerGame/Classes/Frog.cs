@@ -50,8 +50,9 @@ namespace FroggerGame.Classes
             image = Properties.Resources.frogDown;
             Color col = image.GetPixel(1, 1);
             image.MakeTransparent(col);
-            if (posY + speed >= windowHeight) return;
+            if (posY + speed >= windowHeight) return; 
             else posY += speed;
+
             foreach (Rock r in WindowGrid.rockList)
             {
                 if (hitsRock(r)) posY -= speed;
@@ -132,10 +133,12 @@ namespace FroggerGame.Classes
             image = Properties.Resources.frogUp;
             Color col = image.GetPixel(1, 1);
             image.MakeTransparent(col);
+            int prev = posY;
             posY -= 80;
             foreach (Rock r in WindowGrid.rockList)
             {
-                if (hitsRock(r)) posY += 40;
+                if (posY <= 0) posY = prev;
+                else if (hitsRock(r)) posY += 40;
             }
             jumps--;
         }

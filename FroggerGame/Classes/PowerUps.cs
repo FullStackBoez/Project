@@ -85,7 +85,20 @@ namespace FroggerGame.Classes
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        public bool hitsRock(Rock c)
+        {
+            int left = X;
+            int right = X + defaultWidth;
+            int top = Y;
+            int bottom = Y + defaultHeight;
 
+            int cleft = c.X;
+            int cright = c.X + c.width;
+            int ctop = c.Y;
+            int cbottom = c.Y + c.height;
+
+            return !(left + 30 >= cright || right <= cleft || top >= cbottom || bottom <= ctop);
+        }
         protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
