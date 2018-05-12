@@ -34,17 +34,17 @@ namespace FroggerGame
             string folder= Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string specific = Path.Combine(folder, "APP_DATA");
             Directory.CreateDirectory(specific);
-            if (!File.Exists(specific + @"/easy.txt"))
+            if (!File.Exists(specific + @"\easy.txt"))
             {
-                File.Create(specific + @"/easy.txt");
+                File.Create(specific + @"\easy.txt");
             }
-            if (!File.Exists(specific + @"/medium.txt"))
+            if (!File.Exists(specific + @"\medium.txt"))
             {
-                File.Create(specific + @"/medium.txt");
+                File.Create(specific + @"\medium.txt");
             }
-            if (!File.Exists(specific + @"/hard.txt"))
+            if (!File.Exists(specific + @"\hard.txt"))
             {
-                File.Create(specific + @"/hard.txt");
+                File.Create(specific + @"\hard.txt");
             }
         }
         private void backtomenu(object sender, EventArgs e)
@@ -64,25 +64,30 @@ namespace FroggerGame
             {
                 List<string> data = new List<string>();
                 string path= Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string s = "Sorry you didn't make it.\r\nTry again, "+name;
+                string header = "Sorry you didn't make it.\r\nTry again, "+name;
                 string person = name + " " + points;
-                string s1 = "";
+                string tabelData = "";
+                string title = "";
                 PersonParser ps;
                 switch (di)
                 {
                     case DIFICULTY.TOURNAMENT_EASY:
+                        title = "Highscore for easy mode: ";
                         path += @"\APP_DATA\easy.txt";
                         data = File.ReadAllLines(path).ToList();
                         break;
                     case DIFICULTY.TOURNAMENT_MEDIUM:
+                        title = "Highscore for medium mode: ";
                         path += @"\APP_DATA\medium.txt";
                         data = File.ReadAllLines(path).ToList();
                         break;
                     case DIFICULTY.TOURNAMENT_HARD:
+                        title = "Highscore for hard mode: ";
                         path += @"\APP_DATA\hard.txt";
                         data = File.ReadAllLines(path).ToList();
                         break;
                     case DIFICULTY.NOVICE:
+                        title = "Highscore for hard mode: ";
                         path += @"\APP_DATA\hard.txt";
                         data = File.ReadAllLines(path).ToList();
                         break;
@@ -90,22 +95,21 @@ namespace FroggerGame
                 if(di!=DIFICULTY.NOVICE)
                 ps = new PersonParser(data, person);
                 else ps = new PersonParser(data, null);
-                s1 = ps.ToString();
+                tabelData = ps.ToString();
                 data = ps.forData();
                 if (di == DIFICULTY.NOVICE)
                 {
-                    s = "Doing great, " + name + "\r\nTry the Tournament.";
+                    header = "Doing great, " + name + "\r\nTry the Tournament.";
                 }
                 else
                 {
                     if(data!=null)
                     File.WriteAllLines(path, data);
                 }
-                if (ps.flag) s = "Congradulations, " + name + ".\r\nYou are in the Top 5.";
-
-                Debug.WriteLine(path);
-                tabel.Text = s1;
-                message.Text = s;
+                if (ps.flag) header = "Congradulations, " + name + ".\r\nYou are in the Top 5.";
+                tabel.Text = tabelData;
+                message.Text = header;
+                titleLBL.Text = title;
             }
             catch(Exception e)
             {

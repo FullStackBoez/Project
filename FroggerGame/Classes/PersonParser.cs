@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,12 +35,13 @@ namespace FroggerGame.Classes
                 {
                     Person tmp1 = new Person(newPerson[0], Convert.ToInt32(newPerson[1]));
                     list.Add(tmp1);
-                }
-               list=list.OrderByDescending(x => x.Points).ToList();
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (!string.IsNullOrEmpty(person)&&person.Equals(list[i]) && i < 5) flag = true;
-                }
+                    list = list.OrderByDescending(x => x.Points).ToList();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (person.Equals(list[i].ToString()) && i < 5) flag = true;
+                    }
+                }else list = list.OrderByDescending(x => x.Points).ToList();
+
             }
         }
         public override string ToString()

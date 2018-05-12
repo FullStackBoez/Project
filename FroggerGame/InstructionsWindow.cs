@@ -42,5 +42,10 @@ namespace FroggerGame
             whatToDO.Visible = true;
             goal.Visible = false;
         }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

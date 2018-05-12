@@ -35,16 +35,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.newgame = new System.Windows.Forms.Panel();
+            this.name = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.mute = new System.Windows.Forms.Button();
             this.newgame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -116,6 +117,34 @@
             this.newgame.TabIndex = 5;
             this.newgame.Visible = false;
             // 
+            // name
+            // 
+            this.name.Location = new System.Drawing.Point(320, 107);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(198, 20);
+            this.name.TabIndex = 8;
+            this.name.Validating += new System.ComponentModel.CancelEventHandler(this.validate);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(271, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Name: ";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(25, 498);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(90, 31);
+            this.button8.TabIndex = 6;
+            this.button8.Text = "BACK";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.back);
+            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(274, 303);
@@ -176,43 +205,26 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "BOOTCAMP";
             // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(25, 498);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(90, 31);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "BACK";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.back);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(271, 108);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Name: ";
-            // 
-            // name
-            // 
-            this.name.Location = new System.Drawing.Point(320, 107);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(198, 20);
-            this.name.TabIndex = 8;
-            this.name.Validating += new System.ComponentModel.CancelEventHandler(this.validate);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // mute
+            // 
+            this.mute.Location = new System.Drawing.Point(667, 36);
+            this.mute.Name = "mute";
+            this.mute.Size = new System.Drawing.Size(75, 23);
+            this.mute.TabIndex = 11;
+            this.mute.Text = "MUTE";
+            this.mute.UseVisualStyleBackColor = true;
+            this.mute.Click += new System.EventHandler(this.muteSong);
             // 
             // MenuWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.mute);
             this.Controls.Add(this.newgame);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -223,6 +235,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MenuWindow";
             this.Text = "Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closing);
             this.newgame.ResumeLayout(false);
             this.newgame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -249,5 +262,6 @@
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button mute;
     }
 }

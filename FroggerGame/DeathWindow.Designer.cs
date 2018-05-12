@@ -35,6 +35,7 @@
             this.message = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.titleLBL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             // 
             this.tabel.AutoSize = true;
             this.tabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabel.Location = new System.Drawing.Point(104, 276);
+            this.tabel.Location = new System.Drawing.Point(152, 282);
             this.tabel.Name = "tabel";
             this.tabel.Size = new System.Drawing.Size(32, 15);
             this.tabel.TabIndex = 2;
@@ -70,7 +71,7 @@
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Location = new System.Drawing.Point(101, 233);
+            this.message.Location = new System.Drawing.Point(149, 234);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(35, 13);
             this.message.TabIndex = 3;
@@ -96,17 +97,28 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.newgame);
             // 
+            // titleLBL
+            // 
+            this.titleLBL.AutoSize = true;
+            this.titleLBL.Location = new System.Drawing.Point(149, 259);
+            this.titleLBL.Name = "titleLBL";
+            this.titleLBL.Size = new System.Drawing.Size(35, 13);
+            this.titleLBL.TabIndex = 6;
+            this.titleLBL.Text = "label2";
+            // 
             // DeathWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.titleLBL);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.message);
             this.Controls.Add(this.tabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(500, 500);
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "DeathWindow";
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Label message;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label titleLBL;
     }
 }

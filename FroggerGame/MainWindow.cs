@@ -32,8 +32,12 @@ namespace FroggerGame
         private int tickerPoints = 0;
         private int tickerInvincibility = 0;
         private int tickerDeadSafety = 0;
+        private int defaultTimerSpeed = 0;
         private bool isNovise = false;
         private string name = "";
+        private bool isSpedUP = false;
+        public static bool isFrogDead = false;
+        public bool isStarted = false;
         private DIFICULTY di;
 
 
@@ -55,18 +59,18 @@ namespace FroggerGame
                     numOfMoves = -2;
                     break;
                 case DIFICULTY.TOURNAMENT_EASY:
-                    time.Interval = 100;
-                    time.Enabled = true;
+                    defaultTimerSpeed = 100;
+                    time.Interval = defaultTimerSpeed;
                     time.Tick += tic;
                     break;
                 case DIFICULTY.TOURNAMENT_MEDIUM:
-                    time.Interval = 50;
-                    time.Enabled = true;
+                    defaultTimerSpeed = 50;
+                    time.Interval = defaultTimerSpeed;
                     time.Tick += tic;
                     break;
                 case DIFICULTY.TOURNAMENT_HARD:
-                    time.Interval = 30;
-                    time.Enabled = true;
+                    defaultTimerSpeed = 30;
+                    time.Interval = defaultTimerSpeed;
                     time.Tick += tic;
                     break;
             }
@@ -80,12 +84,12 @@ namespace FroggerGame
         }
         private void Draw(object sender, PaintEventArgs e)
         {
-            foreach(Lane ln in windowGrid.windowLanes)
+            foreach (Lane ln in windowGrid.windowLanes)
             {
                 e.Graphics.DrawImage(ln.laneBitmap, ln.laneRectangle);
                 if (ln.powerup != null)
                 {
-                    e.Graphics.DrawImage(ln.powerup.image,ln.powerup.rectangle);
+                    e.Graphics.DrawImage(ln.powerup.image, ln.powerup.rectangle);
                 }
                 if (ln.rock != null)
                 {
@@ -99,7 +103,11 @@ namespace FroggerGame
                     }
                 }
             }
-            e.Graphics.DrawImage(frog.boxImage, frog.boxRectangle);
+            if (!isFrogDead)
+            {
+                e.Graphics.DrawImage(frog.boxImage, frog.boxRectangle);
+            }
+            if (frog.deadSafety) isFrogDead = !isFrogDead;
         }
 
         private void tick(object sender, EventArgs e)
@@ -153,6 +161,12 @@ namespace FroggerGame
         // When a key is pressed the player moves.
         private void move(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter) return;
+            if (di!=DIFICULTY.NOVICE && !isStarted)
+            {
+                time.Enabled = true;
+                isStarted = true;
+            }
             if (e.KeyCode == Keys.Up)
             {
                 frog.moveUp();
@@ -180,18 +194,32 @@ namespace FroggerGame
             {
                 timer1.Enabled = false;
                 time.Enabled = false;
-                DialogResult dr = MessageBox.Show("You have paused the game.\nWould you like to resume?", "Game Paused", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
+                PauseWindow pw = new PauseWindow();
+                pw.ShowDialog();
+                if (pw.state == STATE.NEW_GAME)
+                {
+                    newGame();
+                    timer1.Enabled = true;
+                    time.Enabled = true;
+                }
+                else if (pw.state == STATE.QUIT) Close();
+                else if (pw.state == STATE.RESUMED)
                 {
                     timer1.Enabled = true;
                     time.Enabled = true;
                 }
-                else
-                {
-                    Close();
-                }
+                    pw.Dispose();
             }
-
+            if (di!=DIFICULTY.NOVICE && frog.Y < defaultWindowHeight / 2) isSpedUP = true;
+            else isSpedUP = false;
+            if (di != DIFICULTY.NOVICE && isSpedUP)
+            {
+                time.Interval = 30;
+            }
+            else if (di != DIFICULTY.NOVICE && !isSpedUP)
+            {
+                time.Interval = defaultTimerSpeed;
+            }
             if (isNovise)
             checkLine();
         }
@@ -224,33 +252,36 @@ namespace FroggerGame
             if (!dead)
             {
                 dead = true;
-                Debug.WriteLine("YOLO");
                 DeathWindow dw = new DeathWindow(name, di, pointsInGame);
                 dw.ShowDialog();
                 if (dw.answer == DialogResult.No)
                 {
-                    dw.Dispose();
                     this.Close();
                 }
                 else
                 {
                     dead = false;
-                    foreach (Lane l in windowGrid.windowLanes)
-                    {
-                        l.Dispose();
-                    }
-                    points.Text = "0";
-                    pointsInGame = 0;
-                    numOfMoves = -2;
-                    frog.Dispose();
-                    frog = new Frog
-                        (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
-                    windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
-                    dw.Dispose();
+                    newGame();
                 }
+                dw.Dispose();
             }
         }
-
+        private void newGame()
+        {
+            foreach (Lane l in windowGrid.windowLanes)
+            {
+                l.Dispose();
+            }
+            isSpedUP = false;
+            points.Text = "0";
+            pointsInGame = 0;
+            numOfMoves = -2;
+            frog.Dispose();
+            isStarted = false;
+            frog = new Frog
+                (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
+            windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
+        }
         private void closing(object sender, FormClosingEventArgs e)
         {
             foreach (Lane l in windowGrid.windowLanes)

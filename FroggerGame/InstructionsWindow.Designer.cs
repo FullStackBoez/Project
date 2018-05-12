@@ -34,26 +34,27 @@
             this.title = new System.Windows.Forms.Label();
             this.whatToDO = new System.Windows.Forms.Panel();
             this.goal = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.img = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.whatToDO.SuspendLayout();
             this.goal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -124,6 +125,7 @@
             // 
             // goal
             // 
+            this.goal.Controls.Add(this.button1);
             this.goal.Controls.Add(this.pictureBox6);
             this.goal.Controls.Add(this.label8);
             this.goal.Controls.Add(this.label9);
@@ -135,6 +137,15 @@
             this.goal.Size = new System.Drawing.Size(800, 450);
             this.goal.TabIndex = 21;
             this.goal.Visible = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(307, 82);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(147, 150);
+            this.pictureBox6.TabIndex = 18;
+            this.pictureBox6.TabStop = false;
             // 
             // label8
             // 
@@ -188,6 +199,15 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "Extra Life";
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::FroggerGame.Properties.Resources.extraLife;
+            this.pictureBox5.Location = new System.Drawing.Point(116, 135);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox5.TabIndex = 19;
+            this.pictureBox5.TabStop = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -196,6 +216,15 @@
             this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 18;
             this.label6.Text = "Double points";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::FroggerGame.Properties.Resources.doublePoints;
+            this.pictureBox4.Location = new System.Drawing.Point(636, 135);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox4.TabIndex = 17;
+            this.pictureBox4.TabStop = false;
             // 
             // label5
             // 
@@ -206,6 +235,15 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Mystery box";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::FroggerGame.Properties.Resources.chest;
+            this.pictureBox3.Location = new System.Drawing.Point(506, 135);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -215,6 +253,15 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Invincibility";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FroggerGame.Properties.Resources.invincibility;
+            this.pictureBox2.Location = new System.Drawing.Point(375, 135);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -223,6 +270,15 @@
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Boost Jump";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FroggerGame.Properties.Resources.extraJump;
+            this.pictureBox1.Location = new System.Drawing.Point(248, 135);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -267,60 +323,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.BacktoHOWTODO);
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(307, 82);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(147, 150);
-            this.pictureBox6.TabIndex = 18;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::FroggerGame.Properties.Resources.extraLife;
-            this.pictureBox5.Location = new System.Drawing.Point(116, 135);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox5.TabIndex = 19;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::FroggerGame.Properties.Resources.doublePoints;
-            this.pictureBox4.Location = new System.Drawing.Point(636, 135);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox4.TabIndex = 17;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::FroggerGame.Properties.Resources.chest;
-            this.pictureBox3.Location = new System.Drawing.Point(506, 135);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox3.TabIndex = 15;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FroggerGame.Properties.Resources.invincibility;
-            this.pictureBox2.Location = new System.Drawing.Point(375, 135);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FroggerGame.Properties.Resources.extraJump;
-            this.pictureBox1.Location = new System.Drawing.Point(248, 135);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
             // img
             // 
             this.img.Image = ((System.Drawing.Image)(resources.GetObject("img.Image")));
@@ -330,6 +332,16 @@
             this.img.Size = new System.Drawing.Size(506, 165);
             this.img.TabIndex = 4;
             this.img.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(713, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Close";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Exit);
             // 
             // InstructionsWindow
             // 
@@ -341,6 +353,7 @@
             this.Controls.Add(this.img);
             this.Controls.Add(this.text);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InstructionsWindow";
             this.Text = "Instructions";
             this.whatToDO.ResumeLayout(false);
@@ -385,5 +398,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

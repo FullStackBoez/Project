@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace FroggerGame
 {
     public partial class MenuWindow : Form
     {
         private string name1;
+        public static bool isMusicOn=true;
+        public static SoundPlayer sp;
         public MenuWindow()
         {
+            sp = new SoundPlayer(Properties.Resources.menuSong);
+            sp.PlayLooping();
+           
             InitializeComponent();
         }
 
@@ -107,6 +116,25 @@ namespace FroggerGame
                 e.Cancel = false;
                 errorProvider1.SetError(name, null);
             }
+        }
+
+        private void muteSong(object sender, EventArgs e)
+        {
+            if (isMusicOn)
+            {
+                sp.Stop();
+                isMusicOn = false;
+            }
+            else
+            {
+                sp.PlayLooping();
+                isMusicOn = true;
+            }
+        }
+
+        private void closing(object sender, FormClosingEventArgs e)
+        {
+            if (string.IsNullOrEmpty(name.Text)) name.Text = "filler";
         }
     }
 }

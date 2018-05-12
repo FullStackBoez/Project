@@ -19,9 +19,18 @@ nemozat da se sofpadnata nikad bitrebalo da se spawnuvaat samo na kordinati so s
 12.ako e mozno da se sredi bugot(errorot) so memorijata(slika)
 13.Da se podobri UIto
 14.Sredi so maximuv size na windowot --DONE
-15.Metodot na kalkuliranje na poeni moze(bi trebalo) da se smeni poso e shit
+15.Metodot na kalkuliranje na poeni moze(bi trebalo) da se smeni poso e shit(vo bootcamp mode)
 16.Bug kada sto se pojavuvaat Game Over dialozi bez da umres ili ako si u meni bez da ja igras igrata --DONE
-17.Ima nevidlivi prepreki
+17.Ima nevidlivi prepreki --MAYBE FIXED HAVEN'T NOTISED ANY
 18.Ima error kade sto deadWIndow se pokazuva pak odkoga ke se zatvori --DONE
+19.Dodadi pause menu --DONE
+20.Dodati title na sekoja highscore tabela --DONE
+21.Da trepka zabata koa ke umre --DONE(minimalna sansa za bug)
+22.Koa ke se zeme powerup da se naglasi so zvuk ili animacija 
+23.Na release deathWindow e zaeban poln so bugolvi --POSSABLY DONE
+24.Moze da se stavi count down pred da pocne --DONE
+25.Da se sredi ez modod za da ne se ceka windowot(moze metod koj ubrzuva ako zabata stigne pola screen) --DONE
+25.Moze da se dodade peddals koa isceznuvaat po odredeno vreme
+26.Da se namestat death window i pause window taka sto ke se spawnuvaat na sredina od main window
 
 ###################################################################################
