@@ -56,7 +56,6 @@ namespace FroggerGame
                 case DIFICULTY.NOVICE:
                     isNovise = true;
                     WindowGrid.cameraSpeed = defaultFrogHeight;
-                    numOfMoves = -2;
                     break;
                 case DIFICULTY.TOURNAMENT_EASY:
                     defaultTimerSpeed = 100;
@@ -180,7 +179,7 @@ namespace FroggerGame
             if (e.KeyCode == Keys.Down)
             {
                 frog.moveDown();
-                if(numOfMoves>-2)
+                if(numOfMoves>-2)///vidi
                 numOfMoves--;
             }
             if (e.KeyCode == Keys.Left) frog.moveLeft();
@@ -195,6 +194,7 @@ namespace FroggerGame
                 timer1.Enabled = false;
                 time.Enabled = false;
                 PauseWindow pw = new PauseWindow();
+                pw.StartPosition = FormStartPosition.CenterParent;
                 pw.ShowDialog();
                 if (pw.state == STATE.NEW_GAME)
                 {
@@ -228,9 +228,19 @@ namespace FroggerGame
             if (numOfMoves>=1)
             {
                 pointsUp();
-                frog.moveDown();
-                windowGrid.updateGrid();
-                frog.boxImage = Properties.Resources.frogUp;
+                if (frog.Y < defaultWindowHeight - frog.boxHeight * 2)
+                {
+                    frog.moveDown();
+                    windowGrid.updateGrid();
+                }
+                else if (frog.Y < defaultWindowHeight - frog.boxHeight * 6)
+                {
+                    frog.moveDown();
+                    windowGrid.updateGrid();
+                    frog.moveDown();
+                    windowGrid.updateGrid();
+                }
+                        frog.boxImage = Properties.Resources.frogUp;
                 Color col = frog.boxImage.GetPixel(1, 1);
                 frog.boxImage.MakeTransparent(col);
                 numOfMoves = 0;
@@ -253,6 +263,7 @@ namespace FroggerGame
             {
                 dead = true;
                 DeathWindow dw = new DeathWindow(name, di, pointsInGame);
+                dw.StartPosition = FormStartPosition.CenterParent;
                 dw.ShowDialog();
                 if (dw.answer == DialogResult.No)
                 {
@@ -275,12 +286,14 @@ namespace FroggerGame
             isSpedUP = false;
             points.Text = "0";
             pointsInGame = 0;
-            numOfMoves = -2;
+            numOfMoves = 0;
             frog.Dispose();
             isStarted = false;
+            time.Enabled = false;
             frog = new Frog
                 (defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth, defaultFrogPosX, defaultFrogPosY, defaultFrogSpeed, Properties.Resources.frogUp);
             windowGrid = new WindowGrid(defaultWindowHeight, defaultWindowWidth, defaultFrogHeight, defaultFrogWidth);
+            if(di==DIFICULTY.NOVICE) WindowGrid.cameraSpeed = defaultFrogHeight;
         }
         private void closing(object sender, FormClosingEventArgs e)
         {
