@@ -17,9 +17,9 @@
 nemozat da se sofpadnata nikad bitrebalo da se spawnuvaat samo na kordinati so se delivi so 40)
 11.Moze da se dodade muzika
 12.ako e mozno da se sredi bugot(errorot) so memorijata(slika)
-13.Da se podobri UIto
+13.Da se podobri UIto(na site windows)
 14.Sredi so maximuv size na windowot --DONE
-15.Metodot na kalkuliranje na poeni moze(bi trebalo) da se smeni poso e shit(vo bootcamp mode)
+15.Metodot na kalkuliranje na poeni moze(bi trebalo) da se smeni poso e shit(vo bootcamp mode) -DONE
 16.Bug kada sto se pojavuvaat Game Over dialozi bez da umres ili ako si u meni bez da ja igras igrata --DONE
 17.Ima nevidlivi prepreki --MAYBE FIXED HAVEN'T NOTISED ANY
 18.Ima error kade sto deadWIndow se pokazuva pak odkoga ke se zatvori --DONE
@@ -32,5 +32,6 @@ nemozat da se sofpadnata nikad bitrebalo da se spawnuvaat samo na kordinati so s
 25.Da se sredi ez modod za da ne se ceka windowot(moze metod koj ubrzuva ako zabata stigne pola screen) --DONE
 25.Moze da se dodade peddals koa isceznuvaat po odredeno vreme
 26.Da se namestat death window i pause window taka sto ke se spawnuvaat na sredina od main window --DONE
+27.So poseben font da se ispise sve
 
 ###################################################################################
