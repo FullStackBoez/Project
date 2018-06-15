@@ -46,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wallpaper.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -223,6 +226,26 @@
     <None Include="Resources\images\rip.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="wallpaper.ico" />
+    <None Include="Resources\images\rip1.png" />
+    <None Include="Resources\images\ripPng.png" />
+    <None Include="Resources\images\background.jpg" />
+    <None Include="Resources\images\vine.jpg" />
+    <None Include="Resources\images\vine2.jpg" />
+    <None Include="Resources\images\9.png" />
+    <None Include="Resources\images\18.png" />
+    <None Include="Resources\music\hover.wav" />
+    <None Include="Resources\images\logo.png" />
+    <None Include="Resources\images\Coin.png" />
+    <None Include="Resources\images\menuitem.png" />
+    <None Include="Resources\images\yellow.png" />
+    <None Include="Resources\images\red.png" />
+    <None Include="Resources\images\back.png" />
+    <None Include="Resources\images\burning-log.png" />
+    <None Include="Resources\images\mute.png" />
+    <None Include="Resources\images\unmute.png" />
+    <None Include="Resources\images\wallpaper.jpg" />
+    <None Include="Resources\images\wallpaper2.jpg" />
     <Content Include="Resources\music\menuSong.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

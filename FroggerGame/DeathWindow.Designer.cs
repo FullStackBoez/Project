@@ -43,7 +43,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 76);
+            this.label1.Location = new System.Drawing.Point(171, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 31);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(191, 121);
+            this.pictureBox1.Location = new System.Drawing.Point(202, 115);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(69, 83);
             this.pictureBox1.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.tabel.AutoSize = true;
             this.tabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabel.Location = new System.Drawing.Point(152, 282);
+            this.tabel.Location = new System.Drawing.Point(202, 284);
             this.tabel.Name = "tabel";
             this.tabel.Size = new System.Drawing.Size(32, 15);
             this.tabel.TabIndex = 2;
@@ -71,7 +71,7 @@
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Location = new System.Drawing.Point(149, 234);
+            this.message.Location = new System.Drawing.Point(199, 236);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(35, 13);
             this.message.TabIndex = 3;
@@ -100,7 +100,7 @@
             // titleLBL
             // 
             this.titleLBL.AutoSize = true;
-            this.titleLBL.Location = new System.Drawing.Point(149, 259);
+            this.titleLBL.Location = new System.Drawing.Point(199, 261);
             this.titleLBL.Name = "titleLBL";
             this.titleLBL.Size = new System.Drawing.Size(35, 13);
             this.titleLBL.TabIndex = 6;
@@ -110,7 +110,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(500, 500);
             this.Controls.Add(this.titleLBL);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

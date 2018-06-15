@@ -40,7 +40,7 @@ namespace FroggerGame.Classes
                     break;
                 case 3:
                     power = Powers.DOUBLE_POINTS;
-                    image = Properties.Resources.doublePoints;
+                    image = Properties.Resources.doublePointsReserve;
                     break;
                 case 4:
                     power = Powers.MYSTERYBOX;

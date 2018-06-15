@@ -45,6 +45,7 @@ namespace FroggerGame
 
         public MainWindow(DIFICULTY di,string name)
         {
+
             this.name = name;
             this.di = di;
             frog = new Frog
