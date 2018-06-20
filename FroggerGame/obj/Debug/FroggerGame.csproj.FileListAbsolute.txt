@@ -40,3 +40,17 @@ C:\Users\Gorjan\Desktop\VP Proekt\ForMyRepo\FroggerGame\obj\Debug\FroggerGame.cs
 C:\Users\Gorjan\Desktop\VP Proekt\ForMyRepo\FroggerGame\obj\Debug\FroggerGame.exe
 C:\Users\Gorjan\Desktop\VP Proekt\ForMyRepo\FroggerGame\obj\Debug\FroggerGame.pdb
 C:\Users\Gorjan\Desktop\VP Proekt\ForMyRepo\FroggerGame\obj\Debug\FroggerGame.csprojAssemblyReference.cache
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\bin\Debug\FroggerGame.exe.config
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\bin\Debug\FroggerGame.exe
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\bin\Debug\FroggerGame.pdb
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.csprojAssemblyReference.cache
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.DeathWindow.resources
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.InstructionsWindow.resources
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.MainWindow.resources
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.MenuWindow.resources
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.PauseWindow.resources
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.Properties.Resources.resources
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.csproj.GenerateResource.cache
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.csproj.CoreCompileInputs.cache
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.exe
+C:\Users\Gorjan\Desktop\screenshots\Project\FroggerGame\obj\Debug\FroggerGame.pdb

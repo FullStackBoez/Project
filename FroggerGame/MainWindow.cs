@@ -15,6 +15,7 @@ namespace FroggerGame
     public enum DIFICULTY { NOVICE, TOURNAMENT_EASY, TOURNAMENT_MEDIUM, TOURNAMENT_HARD}
     public partial class MainWindow : Form
     {
+        
         private Frog frog;
         private WindowGrid windowGrid;
         private int defaultWindowWidth=800;
@@ -45,7 +46,7 @@ namespace FroggerGame
 
         public MainWindow(DIFICULTY di,string name)
         {
-
+            
             this.name = name;
             this.di = di;
             frog = new Frog

@@ -24,7 +24,7 @@ namespace FroggerGame
         public MenuWindow()
         {
 
-
+            this.BackColor = Color.Beige;
             sp = new SoundPlayer(Properties.Resources.menuSong);
             sp.PlayLooping();
             

@@ -130,9 +130,6 @@
   <data name="chest" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\images\chest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="extraJump" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\images\extrajump.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="extraLife" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\images\extralife.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -228,5 +225,8 @@
   </data>
   <data name="yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="extraJump" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\ezgif.com-crop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
