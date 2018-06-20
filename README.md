@@ -1,6 +1,6 @@
 ![](https://github.com/FullStackBoez/Project/blob/master/FroggerGame/Resources/images/logo.png)
 
-Windows Forms проект за од: Кристијан Кузмановски, Горјан Малевски и Матеа Цветавов (2017-2018)
+Windows Forms проект изработен од: Кристијан Кузмановски, Горјан Малевски и Матеа Цветанов (2017-2018)
 
 Овој проект е создаден за предметот Визуелно програмирање.
 
