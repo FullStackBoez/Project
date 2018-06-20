@@ -7,7 +7,6 @@ C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.cspro
 C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.csproj.CoreCompileInputs.cache
 C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.exe
 C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.pdb
-C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.csprojResolveAssemblyReference.cache
 C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.DeathWindow.resources
 C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.InstructionsWindow.resources
 C:\Users\Hulk\source\repos\FroggerGame\FroggerGame\obj\Release\FroggerGame.MenuWindow.resources
