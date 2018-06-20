@@ -226,6 +226,9 @@
     <None Include="Resources\images\rip.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\plane_1_titi_son.png" />
+    <None Include="Resources\Halo.png" />
+    <None Include="Resources\images\ezgif.com-crop.png" />
     <Content Include="wallpaper.ico" />
     <None Include="Resources\images\rip1.png" />
     <None Include="Resources\images\ripPng.png" />
