@@ -1,14 +1,9 @@
 ﻿using FroggerGame.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FroggerGame
@@ -19,13 +14,13 @@ namespace FroggerGame
         private string name;
         private  DIFICULTY di;
         private int points;
-
         public DeathWindow(string name,DIFICULTY di,int points)
         {
             this.di = di;
             this.name = name;
             this.points = points;
             InitializeComponent();
+            Debug.WriteLine("1");
             create();
             loadResults();
         }
@@ -36,15 +31,19 @@ namespace FroggerGame
             Directory.CreateDirectory(specific);
             if (!File.Exists(specific + @"\easy.txt"))
             {
-                File.Create(specific + @"\easy.txt");
+               
+               FileStream sf= File.Create(specific + @"\easy.txt");
+               sf.Close();
             }
             if (!File.Exists(specific + @"\medium.txt"))
             {
-                File.Create(specific + @"\medium.txt");
+                FileStream sf = File.Create(specific + @"\medium.txt");
+                sf.Close();
             }
             if (!File.Exists(specific + @"\hard.txt"))
             {
-                File.Create(specific + @"\hard.txt");
+                FileStream sf = File.Create(specific + @"\hard.txt");
+                sf.Close();
             }
         }
         private void backtomenu(object sender, EventArgs e)
@@ -69,30 +68,28 @@ namespace FroggerGame
                 string tabelData = "";
                 string title = "";
                 PersonParser ps;
+                Debug.WriteLine("2");
                 switch (di)
                 {
                     case DIFICULTY.TOURNAMENT_EASY:
                         title = "Highscore for easy mode: ";
                         path += @"\APP_DATA\easy.txt";
-                        data = File.ReadAllLines(path).ToList();
                         break;
                     case DIFICULTY.TOURNAMENT_MEDIUM:
                         title = "Highscore for medium mode: ";
                         path += @"\APP_DATA\medium.txt";
-                        data = File.ReadAllLines(path).ToList();
                         break;
                     case DIFICULTY.TOURNAMENT_HARD:
                         title = "Highscore for hard mode: ";
                         path += @"\APP_DATA\hard.txt";
-                        data = File.ReadAllLines(path).ToList();
                         break;
                     case DIFICULTY.NOVICE:
                         title = "Highscore for hard mode: ";
                         path += @"\APP_DATA\hard.txt";
-                        data = File.ReadAllLines(path).ToList();
                         break;
                 }
-                if(di!=DIFICULTY.NOVICE)
+                data = File.ReadAllLines(path).ToList();
+                if (di!=DIFICULTY.NOVICE)
                 ps = new PersonParser(data, person);
                 else ps = new PersonParser(data, null);
                 tabelData = ps.ToString();
@@ -103,9 +100,12 @@ namespace FroggerGame
                 }
                 else
                 {
-                    if(data!=null)
-                    File.WriteAllLines(path, data);
-                }
+                    Debug.WriteLine("3");
+                    if (data != null)
+                    {
+                        File.WriteAllLines(path, data);
+                    }
+                    }
                 if (ps.flag) header = "Congradulations, " + name + ".\r\nYou are in the Top 5.";
                 tabel.Text = tabelData;
                 message.Text = header;
